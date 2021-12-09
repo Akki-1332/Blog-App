@@ -1,0 +1,49 @@
+{% extends 'start.html' %}
+{% block body %}
+        <!-- Page Header-->
+        {% set fname = "assets/img/" +param["home-img"] %}
+        <header class="masthead" style="background-image: url({{url_for('static', filename= fname   )}})">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>{{param["title"] }}</h1>
+                            <span class="subheading">{{param['sub-heading']}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">                 
+                    
+                    
+                   {% for p in post %} 
+                    <!-- Post preview-->
+                    <div class="post-preview">
+                        <a href="/post/{{p.slug}}">
+                            <h2 class="post-title">{{p.ttl}}</h2>
+                            <h3 class="post-subtitle">{{p.tline[0:80]}}...</h3>
+                        </a>
+                        <p class="post-meta">
+                            Posted by
+                            <a href="#!">Admin</a>
+                            on {{p.date}}
+                        </p>
+                    </div>
+                    <!-- Divider-->
+                    <hr class="my-4" />  
+                    {% endfor %}     
+
+
+
+                    <!-- Pager-->
+                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
+ 
